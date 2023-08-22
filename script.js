@@ -3,11 +3,11 @@ let playerScore = 0;
 let computerScore = 0;
 
 function getRandomInt() {
-    randomInt = Math.floor(Math.random()*3);
-}
+    randomInt = Math.floor(Math.random()*3); /* get random integer */
+} 
 
 
-function getComputerChoice () {
+function getComputerChoice () {/* get computer choice based on random integer */
     
     getRandomInt();
     console.log(randomInt);
@@ -22,12 +22,12 @@ function getComputerChoice () {
 };
 
 
-function playRound (playerSelection, computerSelection) {
+function playRound (playerSelection, computerSelection) { 
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
     
 
-    if (playerSelection === "rock" && computerSelection === "scissors") {
+    if (playerSelection === "rock" && computerSelection === "scissors") { /* Here we can also use "switch" statement*/
         playerScore = ++playerScore;
         return "You win! Rock beats scissors"
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
