@@ -66,7 +66,7 @@ function game () {
 
     if (playerScore === computerScore) {
         console.log(`TIE GAME!`)
-    } else if (playerScore > computerScore) {
+    } else if (playerScore === computerScore){
         console.log(`Player wins with score: ${playerScore}`)
     } else {
         console.log(`Computer wins with score: ${computerScore}`)
