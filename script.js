@@ -1,9 +1,11 @@
 let randomInt;
 let playerScore = 0;
 let computerScore = 0;
+const btns = document.querySelectorAll('button');
 const rockBtn = document.querySelector(`button[data-btn="rock"]`);
 const paperBtn = document.querySelector(`button[data-btn="paper"]`);
 const scissorBtn = document.querySelector(`button[data-btn="scissors"]`);
+
 
 
 
@@ -28,9 +30,7 @@ function getComputerChoice () {/* get computer choice based on random integer */
 
 
 function playRound (playerSelection, computerSelection) { 
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
-    
+ 
 
     if (playerSelection === "rock" && computerSelection === "scissors") { /* Here we can also use "switch" statement*/
         playerScore = ++playerScore;
@@ -61,13 +61,14 @@ function playRound (playerSelection, computerSelection) {
 
 function game () {
     // for (let i = 0; i<5; i++) {    *REMOVING 5 ROUNDS*
-
-        const playerSelection = 'Rock';
-        const computerSelection = getComputerChoice();
-        console.log(computerSelection);
-        console.log(playRound(playerSelection, computerSelection));
-        console.log(`Player score: ${playerScore} and Computer score: ${computerScore}`);
-    }
+    
+    const playerSelection = this.dataset.btn;
+    console.log(playerSelection);
+    const computerSelection = getComputerChoice();
+    console.log(computerSelection);
+    console.log(playRound(playerSelection, computerSelection));
+    console.log(`Player score: ${playerScore} and Computer score: ${computerScore}`);
+}
 
     if (playerScore === computerScore) {
         console.log(`TIE GAME!`)
@@ -78,4 +79,16 @@ function game () {
     }
 // };
 
-game();
+// game();
+
+btns.forEach (btn => {
+    btn.addEventListener('click', function (e) {
+        const playerSelection = this.dataset.btn;
+        const computerSelection = getComputerChoice();
+        console.log(playerSelection);
+        console.log(computerSelection);
+
+        playRound(playerSelection, computerSelection);
+        
+    });
+})
