@@ -1,6 +1,11 @@
 let randomInt;
 let playerScore = 0;
 let computerScore = 0;
+const rockBtn = document.querySelector(`button[data-btn="rock"]`);
+const paperBtn = document.querySelector(`button[data-btn="paper"]`);
+const scissorBtn = document.querySelector(`button[data-btn="scissors"]`);
+
+
 
 function getRandomInt() {
     randomInt = Math.floor(Math.random()*3); /* get random integer */
@@ -55,9 +60,9 @@ function playRound (playerSelection, computerSelection) {
 
 
 function game () {
-    for (let i = 0; i<5; i++) {
+    // for (let i = 0; i<5; i++) {    *REMOVING 5 ROUNDS*
 
-        const playerSelection = prompt("Enter hand signal", 'Rock');
+        const playerSelection = 'Rock';
         const computerSelection = getComputerChoice();
         console.log(computerSelection);
         console.log(playRound(playerSelection, computerSelection));
@@ -71,6 +76,6 @@ function game () {
     } else {
         console.log(`Computer wins with score: ${computerScore}`)
     }
-};
+// };
 
 game();
