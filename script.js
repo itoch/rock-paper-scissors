@@ -2,9 +2,15 @@ let randomInt;
 let playerScore = 0;
 let computerScore = 0;
 const btns = document.querySelectorAll('button');
+const output = document.querySelector('.output');
 const rockBtn = document.querySelector(`button[data-btn="rock"]`);
 const paperBtn = document.querySelector(`button[data-btn="paper"]`);
 const scissorBtn = document.querySelector(`button[data-btn="scissors"]`);
+const displayPlayerSelection = document.createElement('div');
+const displayComputerSelection = document.createElement('div');
+
+output.appendChild(displayPlayerSelection);
+output.appendChild(displayComputerSelection);
 
 
 
@@ -17,7 +23,6 @@ function getRandomInt() {
 function getComputerChoice () {/* get computer choice based on random integer */
     
     getRandomInt();
-    console.log(randomInt);
     
     if (randomInt === 0) {
         return "paper"
@@ -63,10 +68,7 @@ function game () {
     // for (let i = 0; i<5; i++) {    *REMOVING 5 ROUNDS*
     
     const playerSelection = this.dataset.btn;
-    console.log(playerSelection);
     const computerSelection = getComputerChoice();
-    console.log(computerSelection);
-    console.log(playRound(playerSelection, computerSelection));
     console.log(`Player score: ${playerScore} and Computer score: ${computerScore}`);
 }
 
@@ -85,8 +87,9 @@ btns.forEach (btn => {
     btn.addEventListener('click', function (e) {
         const playerSelection = this.dataset.btn;
         const computerSelection = getComputerChoice();
-        console.log(playerSelection);
-        console.log(computerSelection);
+
+        displayPlayerSelection.innerText = `Player choice: ${playerSelection}`;
+        displayComputerSelection.innerText = `Computer choice: ${computerSelection}`;
 
         playRound(playerSelection, computerSelection);
         
